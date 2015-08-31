@@ -166,7 +166,7 @@ void loop() {
        }        
      }
      else{
-       for (int f = newWeekStart; f < newWeekStart+7; f++){
+       for (int f = newWeekStart; f < 31; f++){
          week5 = week5 + String(f) + " ";
        }
        // are there 31 days
