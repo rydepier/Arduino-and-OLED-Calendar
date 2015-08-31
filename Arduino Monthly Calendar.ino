@@ -19,31 +19,31 @@ SCL to Arduino A5 (UNO) or Mega pin 21
  #include <Wire.h>
  #include "RTClib.h" 
  // setup u8g object
- U8GLIB_SSD1306_128X64 u8g(U8G_I2C_OPT_NONE);	// I2C 
+  U8GLIB_SSD1306_128X64 u8g(U8G_I2C_OPT_NONE);	// I2C 
  //
  RTC_DS1307 RTC;
- //
- int startDay = 0; // Sunday's value is 0, Saturday is 6
- String week1 ="";
- String week2 ="";
- String week3 ="";
- String week4 ="";
- String week5 ="";
- int newWeekStart = 0; // used to show start of next week of the month
- char monthString2[37]= {"JanFebMarAprMayJunJulAugSepOctNovDec"};
- int  monthIndex2[122] ={0,3,6,9,12,15,18,21,24,27,30,33};
- char monthName2[3]="";
- int monthLength = 0;
- //
+//
+  int startDay = 0; // Sunday's value is 0, Saturday is 6
+  String week1 ="";
+  String week2 ="";
+  String week3 ="";
+  String week4 ="";
+  String week5 ="";
+  int newWeekStart = 0; // used to show start of next week of the month
+  char monthString2[37]= {"JanFebMarAprMayJunJulAugSepOctNovDec"};
+  int  monthIndex2[122] ={0,3,6,9,12,15,18,21,24,27,30,33};
+  char monthName2[3]="";
+  int monthLength = 0;
+//
 
 
 void setup() {
- Serial.begin(9600);
- // Setup RTC
- Wire.begin();
- RTC.begin();
- if (! RTC.isrunning()) {
-   Serial.println("RTC is NOT running!");
+  Serial.begin(9600);
+// Setup RTC
+  Wire.begin();
+  RTC.begin();
+  if (! RTC.isrunning()) {
+    Serial.println("RTC is NOT running!");
   }
   // following line sets the RTC to the date & time this sketch was compiled  
   // un REM the line below to set clock, then re REM it
@@ -99,7 +99,7 @@ void loop() {
       break; 
      case 5:
       // Friday
- if(monthLength == 28 || monthLength == 30){week1 = "                1  2";}      
+      if(monthLength == 28 || monthLength == 30){week1 = "                1  2";}      
       if(monthLength == 31){week1 = "31              1  2";}      
       break; 
      case 6:
@@ -177,7 +177,10 @@ void loop() {
    }
    const char* newWeek5 = (const char*) week5.c_str();  
    u8g.drawStr(2,59,newWeek5);
-   // To print to Serial Monitor un REM the following
+   //
+   // To print to Serial Monitor instead of OLED un-REM the following
+   // if data is sent to Serial Monitor the OLED will not display data!!!
+   /*
    Serial.println("Su Mo Tu We Th Fr Sa");
    Serial.println(week1);  
    Serial.println(week2);  
@@ -185,6 +188,7 @@ void loop() {
    Serial.println(week4);    
    Serial.println(week5);  
    while(1);  // wait indefinitly
+   */
  } 
 /********************************************************/
 
