@@ -157,7 +157,7 @@ void loop() {
    }
    else{ // print up to 30 anyway
      if(now.month() == 2){  // its February
-       for (f = newWeekStart; f < 29; f++){
+       for (int f = newWeekStart; f < 29; f++){
          week5 = week5 + String(f) + " ";  
        }  
        // is it a leap year
@@ -166,7 +166,7 @@ void loop() {
        }        
      }
      else{
-       for (f = newWeekStart; f < newWeekStart+7; f++){
+       for (int f = newWeekStart; f < newWeekStart+7; f++){
          week5 = week5 + String(f) + " ";
        }
        // are there 31 days
